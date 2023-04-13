@@ -32,94 +32,174 @@ style: |
   @import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css'
 ---
 
-# My Presentation
-![bg right](https://picsum.photos/800/600)
+<!-- _footer: 'https://github.com/Codebytes/build-with-bicep' -->
+
+![bg left:40%](./img/background.png)
+
+# Continuous Load Testing with GitHub Actions
+![github logo w:200](./img/github-logo.png)
+
+# Chris Ayers ![w:120](img/portrait.png)
 
 ---
 
-<!-- Speaker Notes -->
-## Slide 1
+![bg left:40%](./img/portrait.png)
 
-- Item 1
-- Item 2
-- Item 3
-<!-- Can have multiple on a slide -->
+## Chris Ayers
+### Senior Customer Engineer<br>Microsoft
 
----
-
-## Slide 2
-<!-- Can also do a multiline
-comment that will show in notes -->
-
-![Image](https://picsum.photos/800/600)
+<i class="fa-brands fa-twitter"></i> Twitter: @Chris\_L\_Ayers
+<i class="fa-brands fa-mastodon"></i> Mastodon: @Chrisayers@hachyderm.io
+<i class="fa-brands fa-linkedin"></i> LinkedIn: - [chris\-l\-ayers](https://linkedin.com/in/chris-l-ayers/)
+<i class="fa fa-window-maximize"></i> Blog: [https://chris-ayers\.com/](https://chris-ayers.com/)
+<i class="fa-brands fa-github"></i> GitHub: [Codebytes](https://github.com/codebytes)
 
 ---
 
-## Slide 3
+# Agenda
 
-> This is a quote.
+- **Introduction**
+- **Manual Testing vs Testing in Pipelines**
+- **Common Load Testing Challenges**
+- **JMeter and Azure Load Testing Service**
+- **Infrastructure as Code (IaC) and Continuous Load Testing on GitHub Actions**
+- **Benefits of Shift-Left Load Testing**
+- **Conclusion and Q&A**
+
+--- 
+
+# What is Load Testing?
+
+- Evaluates application, system, or network performance under specific load conditions or increasing levels of load
+- Helps identify bottlenecks, ensure reliability, and verify capacity
+- Involves simulating real-world usage scenarios and gradually increasing load to observe system behavior
 
 ---
 
-## Slide 4
+# Key Concepts of Load Testing
 
-| Column 1 | Column 2 |
-| -------- | -------- |
-| Item 1   | Item 2   |
-| Item 3   | Item 4   |
+- **Virtual users:** Simulate concurrent connections to mimic real-world user traffic
+- **Ramp-up time:** Time taken to reach the full number of virtual users
+- **Response time:** Time from sending a request to receiving the last response
+- **Latency:** Time from sending a request to receiving the first response
+- **Requests per second (RPS):** Total number of requests generated per second during the test
 
 ---
 
-![bg opacity](https://picsum.photos/800/600?image=53)
-## Slide 5
+# Why Load Test?
+
+- **Identify bottlenecks**: Uncover performance limitations within an application
+- **Ensure reliability**: Verify the application can withstand high levels of user traffic
+- **Verify capacity**: Validate that the application can handle anticipated user load
+
+---
+
+# Manual Testing vs Testing in Pipelines
+
+- Manual testing: Time-consuming, prone to human error, and inconsistent
+- Testing in pipelines: Automated, consistent, scalable, and integrated with development processes
+
+---
+
+# Typical Problems with Load Testing
+
+- Insufficient test coverage
+- Last-minute testing leading to delays and increased costs
+- Inaccurate load simulation
+- Lack of integration with development processes
+
+---
+
+# JMeter and Azure Load Testing Service
+
+- JMeter: Open-source, extensible load testing tool
+- Azure Load Testing Service: Scalable, cloud-based platform for running JMeter tests
+- Combines the power of JMeter with the scalability and reliability of Azure
+
+---
+
+# Creating JMeter Tests
+
+- Plan your test scenario
+- Record user interactions using JMeter's proxy
+- Customize test parameters and settings
+- Validate and run the test
+
+---
+
+# Utilizing Azure Load Testing Service
+
+- Upload JMeter test plan to Azure
+- Configure test duration, load pattern, and number of users
+- Monitor test progress and analyze results
+
+---
+
+# Infrastructure as Code (IaC)
+
+- IaC: Managing and provisioning infrastructure through code
+- Enhances repeatability, consistency, and scalability
+- Popular tools: Terraform, CloudFormation, and ARM Templates
+
+---
+
+# Continuous Load Testing on GitHub Actions
+
+- GitHub Actions: Platform for automation and CI/CD
+- Automate load testing as part of your development process
+- Run tests against ephemeral environments created using IaC
+
+---
+
+# Benefits of Shift-Left Load Testing
+
+- Early identification of performance bottlenecks
+- Improved collaboration between developers, testers, and operations
+- Reduced costs and increased confidence in solutions
+- Faster feedback loop and shorter time to market
+
+---
+
+# Conclusion
+
+Shift-left load testing and integration with DevOps processes are crucial for reducing costs, preventing issues, and increasing confidence in your solutions. By utilizing JMeter, Azure Load Testing Service, and GitHub Actions, you can automate and scale load testing while incorporating it seamlessly into your development workflow.
+
+---
+
+
+# Demos
+
+---
+
+# Questions
+
+![bg](./img/background.jpg)
+![bg](./img/owl.png)
+
+---
+
+# Resources 
+
 
 <div class="columns">
 <div>
 
-## Left
+## Links
 
-- 1
-- 2
+- [https://docs.microsoft.com/en-us/events/learntv/learnlive-iac-and-bicep/](https://docs.microsoft.com/en-us/events/learntv/learnlive-iac-and-bicep/)
+- [https://github.com/codebytes](https://github.com/codebytes)
 
 </div>
 <div>
 
-## Right
+## Chris Ayers 
 
-- 3
-- 4
+<i class="fa-brands fa-twitter"></i> Twitter: @Chris\_L\_Ayers
+<i class="fa-brands fa-mastodon"></i> Mastodon: @Chrisayers@hachyderm.io
+<i class="fa-brands fa-linkedin"></i> LinkedIn: - [chris\-l\-ayers](https://linkedin.com/in/chris-l-ayers/)
+<i class="fa fa-window-maximize"></i> Blog: [https://chris-ayers\.com/](https://chris-ayers.com/)
+<i class="fa-brands fa-github"></i> GitHub: [Codebytes](https://github.com/codebytes)
 
 </div>
-</div>
 
----
-
-## Slide 6
-
-<i class="fa-brands fa-twitter"></i> Twitter: 
-<i class="fa-brands fa-mastodon"></i> Mastodon: 
-<i class="fa-brands fa-linkedin"></i> LinkedIn: 
-<i class="fa fa-window-maximize"></i> Blog: 
-<i class="fa-brands fa-github"></i> GitHub: 
-
----
-
-# <!--fit--> Large Text
-
----
-
-<!-- Needed for mermaid, can be anywhere in file except frontmatter -->
-<script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true });
-</script>
-
-# Mermaid
-
-<div class="mermaid">
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
 </div>
