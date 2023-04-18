@@ -28,8 +28,7 @@ jobs:
   changes:
     runs-on: ubuntu-latest
     # Required permissions
-    permissions:
-      pull-requests: read
+    permissions: read-all
     # Set job outputs to values from filter step
     outputs:
       backend: ${{ steps.filter.outputs.backend }}
