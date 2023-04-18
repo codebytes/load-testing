@@ -19,9 +19,8 @@ env:
   AZURE_BICEP_PATH: 'project/bicep' # set this to the path to your web app project, defaults to the repository root
   AZURE_FUNCTIONAPP_PACKAGE_PATH: 'project/api' # set this to the path to your web app project, defaults to the repository root
   AZURE_WEBAPP_PACKAGE_PATH: 'project/webapp'
-  AZURE_LOAD_TEST_PATH: 'assets'
   DOTNET_VERSION: '6.0.x' # set this to the dotnet version to use
-  LOAD_TEST_CONFIG: 'LoadTestConfig.yaml'
+  LOAD_TEST_CONFIG: 'project/tests/LoadTestConfig.yaml'
 
 jobs:
   # JOB to run change detection
@@ -70,7 +69,7 @@ jobs:
   build-and-deploy-backend:
     needs: [changes, deploy-iac]
     if: ${{ needs.changes.outputs.backend == 'true' }}
-    concurrency: demo_environment
+    concurrency: demo_environment_backend
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout GitHub Action'
@@ -100,7 +99,7 @@ jobs:
   build-and-deploy-frontend:
     needs: [changes, deploy-iac]
     if: ${{ needs.changes.outputs.frontend  == 'true' }}
-    concurrency: demo_environment
+    concurrency: demo_environment_frontend
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -139,7 +138,7 @@ jobs:
   loadTest:
     name: Load Test
     needs: [deploy-iac, build-and-deploy-backend, build-and-deploy-frontend]
-    concurrency: demo_environment
+    concurrency: demo_environment_load
     runs-on: ubuntu-latest
     if: |
       always() && 
