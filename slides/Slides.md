@@ -2,6 +2,7 @@
 marp: true
 theme: default
 footer: 'https://example.com'
+mermaid: true
 style: |
   .columns {
     display: grid;
@@ -110,6 +111,41 @@ style: |
 
 ---
 
+# What is JMeter?
+
+- Apache open-source software for load testing
+GitHub 
+  - apache/jmeter: Apache JMeter open-source load testing tool for analyzing and measuring the performance of a variety of services
+- First version dates to 1998
+- Runs on Java and supported on all major platforms
+- Probably the most popular load testing tool on the market with a huge user community
+- Typically, two major releases per year
+
+---
+
+# What can JMeter Do?
+
+- Supports multiple protocols, such as:
+  - HTTP
+  - SOAP
+  - LDAP
+  - SMTP
+  - JDBC
+- Any other protocol callable from one of the languages supported by the JSR223 Sampler (we’ll get to this later)
+- Has an IDE for building and debugging load tests (GUI mode)
+- Has a CLI for running load tests on scale (non-GUI mode)
+- Integrated reporting and analysis tools
+
+---
+
+# JMeter Limitations
+
+- JMeter is NOT a browser!
+- It does not execute any JavaScript code or evaluate any HTML or CSS!
+- Therefore, the Response Time in JMeter will be less than the actual response time in a browser!
+
+---
+
 # JMeter and Azure Load Testing Service
 
 - JMeter: Open-source, extensible load testing tool
@@ -124,6 +160,13 @@ style: |
 - Record user interactions using JMeter's proxy
 - Customize test parameters and settings
 - Validate and run the test
+
+---
+
+# JMeter Workflow
+
+
+![w:900px](img/jmeter-workflow.drawio.png)
 
 ---
 
@@ -203,3 +246,8 @@ Shift-left load testing and integration with DevOps processes are crucial for re
 </div>
 
 </div>
+
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true });
+</script>
