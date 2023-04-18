@@ -46,6 +46,7 @@ jobs:
             - 'project/webapp/**'
   deploy-iac:
     runs-on: ubuntu-latest
+    concurrency: demo_environment
     outputs:
       functionAppName: ${{ steps.deploy.outputs.functionAppName }}
       functionAppUrl: ${{ steps.deploy.outputs.functionAppUrl }}
@@ -69,6 +70,7 @@ jobs:
   build-and-deploy-backend:
     needs: [changes, deploy-iac]
     if: ${{ needs.changes.outputs.backend == 'true' }}
+    concurrency: demo_environment
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout GitHub Action'
@@ -98,6 +100,7 @@ jobs:
   build-and-deploy-frontend:
     needs: [changes, deploy-iac]
     if: ${{ needs.changes.outputs.frontend  == 'true' }}
+    concurrency: demo_environment
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -136,6 +139,7 @@ jobs:
   loadTest:
     name: Load Test
     needs: [deploy-iac, build-and-deploy-backend, build-and-deploy-frontend]
+    concurrency: demo_environment
     runs-on: ubuntu-latest
     if: |
       always() && 
