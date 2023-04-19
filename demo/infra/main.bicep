@@ -29,13 +29,8 @@ resource webApp 'Microsoft.Web/sites@2016-08-01' = {
       ]
       phpVersion: '7.1'
     }
-    serverFarmId: '/subscriptions/${subscription().subscriptionId}/resourcegroups/${resourceGroup().name}/providers/Microsoft.Web/serverfarms/${hostingPlanName}'
-    hostingEnvironment: ''
+    serverFarmId: hostingPlan.id
   }
-  
-  dependsOn: [
-    hostingPlan
-  ]
 }
 
 resource webAppName_Microsoft_ApplicationInsights_AzureWebSites 'Microsoft.Web/sites/siteextensions@2015-08-01' = {
@@ -46,7 +41,7 @@ resource webAppName_Microsoft_ApplicationInsights_AzureWebSites 'Microsoft.Web/s
 
 resource hostingPlan 'Microsoft.Web/serverfarms@2018-02-01' = {
   name: hostingPlanName
-  location: resourceGroup().location
+  location: location
   sku: {
     name: 'P2v3'
     tier: 'PremiumV3'
@@ -88,10 +83,6 @@ resource databaseAccountId_sampledatabase_samplecollection 'Microsoft.DocumentDB
     }
     options: {}
   }
-  dependsOn: [
-
-    databaseAccountId_resource
-  ]
 }
 
 resource databaseAccountId_sampledatabase_samplecollection_default 'Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/throughputSettings@2020-06-01-preview' = {
@@ -102,18 +93,11 @@ resource databaseAccountId_sampledatabase_samplecollection_default 'Microsoft.Do
       throughput: 400
     }
   }
-  dependsOn: [
-    databaseAccountId_sampledatabase
-    databaseAccountId_resource
-  ]
 }
 
 resource Microsoft_Insights_components_webApp 'Microsoft.Insights/components@2014-04-01' = {
   name: webAppName
   location: location
-  tags: {
-    'hidden-link:${resourceGroup().id}/providers/Microsoft.Web/sites/${webAppName}': 'Resource'
-  }
   properties: {
     applicationId: webAppName
     Request_Source: 'AzureTfsExtensionAzureProject'
