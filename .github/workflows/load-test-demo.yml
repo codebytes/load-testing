@@ -45,7 +45,7 @@ jobs:
         continue-on-error: false
         with:
           inlineScript: |
-            az group create --name "${{ vars.AZURE_RG }}" --location "${{ env.LOCATION }}"
+            az group create --name "${{ env.LOAD_TEST_RESOURCE_GROUP }}" --location "${{ env.LOCATION }}"
           azPSVersion: "latest"      
   
     # Deploy Arm template
@@ -53,7 +53,7 @@ jobs:
         id: deploy
         uses: Azure/arm-deploy@v1
         with:
-          resourceGroupName: ${{ vars.AZURE_RG }}
+          resourceGroupName: ${{ env.LOAD_TEST_RESOURCE_GROUP }}
           template: 'demo/infra/main.bicep'
           parameters: webAppName=${{ env.AZURE_WEBAPP_NAME }}
             
