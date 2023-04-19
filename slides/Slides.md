@@ -57,12 +57,19 @@ style: |
 
 ---
 
+# Continuous Load Testing with GitHub Actions
+
+---
+
 # Agenda
 
-- **Introduction**
+- **What is Load Testing?**
+  - **Key Concepts of Load Testing**
+  - **Why Load Test?**
 - **Manual Testing vs Testing in Pipelines**
-- **Common Load Testing Challenges**
-- **JMeter and Azure Load Testing Service**
+  - **Common Load Testing Challenges**
+- **JMeter**
+  - **JMeter and Azure Load Testing Service**
 - **Infrastructure as Code (IaC) and Continuous Load Testing on GitHub Actions**
 - **Benefits of Shift-Left Load Testing**
 - **Conclusion and Q&A**
@@ -83,7 +90,9 @@ style: |
 - **Ramp-up time:** Time taken to reach the full number of virtual users
 - **Response time:** Time from sending a request to receiving the last response
 - **Latency:** Time from sending a request to receiving the first response
-- **Requests per second (RPS):** Total number of requests generated per second during the test
+- **Requests per second (RPS):** Total number of requests generated per second during the test 
+> RPS = (number of requests) / (total time in seconds)
+> Virtual users = (RPS) * (latency in seconds)
 
 ---
 
@@ -92,6 +101,39 @@ style: |
 - **Identify bottlenecks**: Uncover performance limitations within an application
 - **Ensure reliability**: Verify the application can withstand high levels of user traffic
 - **Verify capacity**: Validate that the application can handle anticipated user load
+
+---
+
+# What is JMeter?
+
+- Apache open-source software for load testing
+- First version dates to 1998
+- Runs on Java and supported on all major platforms
+- Probably the most popular load testing tool on the market with a huge user community
+- Typically, two major releases per year
+
+---
+
+# What can JMeter Do?
+
+- Supports multiple protocols, such as:
+  - HTTP
+  - SOAP
+  - LDAP
+  - SMTP
+  - JDBC
+  - Mutiple other protocols
+- Has an IDE for building and debugging load tests (GUI mode)
+- Has a CLI for running load tests on scale (non-GUI mode)
+- Integrated reporting and analysis tools
+
+---
+
+# JMeter Limitations
+
+- JMeter is NOT a browser!
+- It does not execute any JavaScript code or evaluate any HTML or CSS!
+- Therefore, the Response Time in JMeter will be less than the actual response time in a browser!
 
 ---
 
@@ -108,41 +150,6 @@ style: |
 - Last-minute testing leading to delays and increased costs
 - Inaccurate load simulation
 - Lack of integration with development processes
-
----
-
-# What is JMeter?
-
-- Apache open-source software for load testing
-GitHub 
-  - apache/jmeter: Apache JMeter open-source load testing tool for analyzing and measuring the performance of a variety of services
-- First version dates to 1998
-- Runs on Java and supported on all major platforms
-- Probably the most popular load testing tool on the market with a huge user community
-- Typically, two major releases per year
-
----
-
-# What can JMeter Do?
-
-- Supports multiple protocols, such as:
-  - HTTP
-  - SOAP
-  - LDAP
-  - SMTP
-  - JDBC
-- Any other protocol callable from one of the languages supported by the JSR223 Sampler (we’ll get to this later)
-- Has an IDE for building and debugging load tests (GUI mode)
-- Has a CLI for running load tests on scale (non-GUI mode)
-- Integrated reporting and analysis tools
-
----
-
-# JMeter Limitations
-
-- JMeter is NOT a browser!
-- It does not execute any JavaScript code or evaluate any HTML or CSS!
-- Therefore, the Response Time in JMeter will be less than the actual response time in a browser!
 
 ---
 
@@ -165,8 +172,12 @@ GitHub
 
 # JMeter Workflow
 
-
 ![w:900px](img/jmeter-workflow.drawio.png)
+
+---
+
+# Azure Load Testing Service
+![w:900px](img/azure-load-testing-architecture.png)
 
 ---
 
@@ -182,7 +193,7 @@ GitHub
 
 - IaC: Managing and provisioning infrastructure through code
 - Enhances repeatability, consistency, and scalability
-- Popular tools: Terraform, CloudFormation, and ARM Templates
+- Popular tools: Terraform, ARM Templates, Bicep Templates
 
 ---
 
@@ -203,21 +214,13 @@ GitHub
 
 ---
 
-# Conclusion
-
-Shift-left load testing and integration with DevOps processes are crucial for reducing costs, preventing issues, and increasing confidence in your solutions. By utilizing JMeter, Azure Load Testing Service, and GitHub Actions, you can automate and scale load testing while incorporating it seamlessly into your development workflow.
-
----
-
-
 # Demos
 
 ---
 
 # Questions
 
-![bg](./img/background.jpg)
-![bg](./img/owl.png)
+![bg right](./img/owl.png)
 
 ---
 
