@@ -4,7 +4,7 @@ param webAppName string
 var hostingPlanName = '${webAppName}-plan'
 var dbAccountName = '${webAppName}-db'
 
-resource webApp 'Microsoft.Web/sites@2016-08-01' = {
+resource webApp 'Microsoft.Web/sites@2022-09-01' = {
   name: webAppName
   location: location
   properties: {
@@ -12,7 +12,7 @@ resource webApp 'Microsoft.Web/sites@2016-08-01' = {
       appSettings: [
         {
           name: 'APPINSIGHTS_INSTRUMENTATIONKEY'
-          value: reference(Microsoft_Insights_components_webApp.id, '2015-05-01').InstrumentationKey
+          value: Microsoft_Insights_components_webApp.properties.InstrumentationKey
         }
         {
           name: 'WEBSITE_NODE_DEFAULT_VERSION'
@@ -33,10 +33,9 @@ resource webApp 'Microsoft.Web/sites@2016-08-01' = {
   }
 }
 
-resource webAppName_Microsoft_ApplicationInsights_AzureWebSites 'Microsoft.Web/sites/siteextensions@2015-08-01' = {
+resource webAppName_Microsoft_ApplicationInsights_AzureWebSites 'Microsoft.Web/sites/siteextensions@2022-09-01' = {
   parent: webApp
   name: 'Microsoft.ApplicationInsights.AzureWebSites'
-  properties: {}
 }
 
 resource hostingPlan 'Microsoft.Web/serverfarms@2018-02-01' = {
@@ -62,7 +61,7 @@ resource hostingPlan 'Microsoft.Web/serverfarms@2018-02-01' = {
   }
 }
 
-resource databaseAccountId_sampledatabase 'Microsoft.DocumentDB/databaseAccounts/mongodbDatabases@2020-06-01-preview' = {
+resource databaseAccountId_sampledatabase 'Microsoft.DocumentDB/databaseAccounts/mongodbDatabases@2022-11-15' = {
   parent: databaseAccountId_resource
   name: 'sampledatabase'
   properties: {
@@ -73,13 +72,12 @@ resource databaseAccountId_sampledatabase 'Microsoft.DocumentDB/databaseAccounts
   }
 }
 
-resource databaseAccountId_sampledatabase_samplecollection 'Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections@2020-06-01-preview' = {
+resource databaseAccountId_sampledatabase_samplecollection 'Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections@2022-11-15' = {
   parent: databaseAccountId_sampledatabase
   name: 'samplecollection'
   properties: {
     resource: {
       id: 'samplecollection'
-      indexes: []
     }
     options: {}
   }
@@ -95,22 +93,27 @@ resource databaseAccountId_sampledatabase_samplecollection_default 'Microsoft.Do
   }
 }
 
-resource Microsoft_Insights_components_webApp 'Microsoft.Insights/components@2014-04-01' = {
+resource Microsoft_Insights_components_webApp 'Microsoft.Insights/components@2020-02-02' = {
   name: webAppName
   location: location
+  kind: 'web'
   properties: {
-    applicationId: webAppName
+    Application_Type: 'web'
     Request_Source: 'AzureTfsExtensionAzureProject'
   }
 }
 
-resource databaseAccountId_resource 'Microsoft.DocumentDb/databaseAccounts@2015-04-08' = {
+resource databaseAccountId_resource 'Microsoft.DocumentDB/databaseAccounts@2022-11-15' = {
   kind: 'MongoDB'
   name: dbAccountName
   location: location
   properties: {
     databaseAccountOfferType: 'Standard'
-    name: dbAccountName
+    locations: [
+      {
+        locationName: location
+      }
+    ]
   }
 }
 
