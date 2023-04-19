@@ -7,9 +7,6 @@ var dbAccountName = '${webAppName}-db'
 resource webApp 'Microsoft.Web/sites@2016-08-01' = {
   name: webAppName
   location: location
-  tags: {
-    'hidden-related:/subscriptions/${subscription().subscriptionId}/resourcegroups/${resourceGroup().name}/providers/Microsoft.Web/serverfarms/${hostingPlanName}': 'empty'
-  }
   properties: {
     siteConfig: {
       appSettings: [
@@ -32,7 +29,6 @@ resource webApp 'Microsoft.Web/sites@2016-08-01' = {
       ]
       phpVersion: '7.1'
     }
-    name: webAppName
     serverFarmId: '/subscriptions/${subscription().subscriptionId}/resourcegroups/${resourceGroup().name}/providers/Microsoft.Web/serverfarms/${hostingPlanName}'
     hostingEnvironment: ''
   }
