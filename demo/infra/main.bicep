@@ -27,7 +27,7 @@ resource webApp 'Microsoft.Web/sites@2016-08-01' = {
         }
         {
           name: 'MSDEPLOY_RENAME_LOCKED_FILES'
-          value: 1
+          value: '1'
         }
       ]
       phpVersion: '7.1'
@@ -134,4 +134,3 @@ resource databaseAccountId_resource 'Microsoft.DocumentDb/databaseAccounts@2015-
   }
 }
 
-output azureCosmosDBAccountKeys string = listConnectionStrings('Microsoft.DocumentDb/databaseAccounts/${dbAccountName}', '2015-04-08').connectionStrings[0].connectionString
