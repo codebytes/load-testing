@@ -8,6 +8,10 @@ on:
       branches:
         - main
 
+permissions:
+  id-token: write
+  contents: read
+  
 env:
   AZURE_WEBAPP_NAME: "cayers-lt-demo"    # set this to your application's name
   LOAD_TEST_RESOURCE: "cayers-demo-lt-service"
