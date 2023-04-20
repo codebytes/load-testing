@@ -57,20 +57,16 @@ style: |
 
 ---
 
-# Continuous Load Testing with GitHub Actions
-
----
-
 # Agenda
 
 - **What is Load Testing?**
-  - **Key Concepts of Load Testing**
-  - **Why Load Test?**
-- **Manual Testing vs Testing in Pipelines**
-  - **Common Load Testing Challenges**
+  - **Key Load Testing Concepts**
+  - **Importance of Load Testing**
+  - **Manual Testing vs Testing in Pipelines**
+  - **Challenges in Load Testing**
 - **JMeter**
   - **JMeter and Azure Load Testing Service**
-- **Infrastructure as Code (IaC) and Continuous Load Testing on GitHub Actions**
+- **Infrastructure as Code (IaC) and Continuous Load Testing**
 - **Benefits of Shift-Left Load Testing**
 - **Conclusion and Q&A**
 
@@ -78,9 +74,28 @@ style: |
 
 # What is Load Testing?
 
-- Evaluates application, system, or network performance under specific load conditions or increasing levels of load
+- Evaluating an application, system, or network performance under specific load conditions or increasing levels of load
 - Helps identify bottlenecks, ensure reliability, and verify capacity
 - Involves simulating real-world usage scenarios and gradually increasing load to observe system behavior
+
+---
+
+# Types of Load Tests
+
+<div class="columns">
+<div>
+
+![w:450](img/load-test.png)
+![w:450](img/stress-test.png)
+
+</div>
+<div>
+
+![w:450](img/soak-test.png)
+![w:450](img/spike-test.png)
+
+</div>
+</div>
 
 ---
 
@@ -104,60 +119,60 @@ style: |
 
 ---
 
-# What is JMeter?
+# Manual Testing vs Testing in Pipelines
 
-- Apache open-source software for load testing
-- First version dates to 1998
-- Runs on Java and supported on all major platforms
-- Probably the most popular load testing tool on the market with a huge user community
-- Typically, two major releases per year
+<div class="columns">
+<div>
+
+## Manual Testing
+
+- **Time-consuming**
+- **Prone to human error**
+- **Inconsistent**
+- **Limited scalability**
+</div>
+<div>
+
+## Testing in Pipelines
+
+- **Automated**
+- **Consistent**
+- **Scalable**
+- **Integrated with development processes**
+</div>
+</div>
 
 ---
 
-# What can JMeter Do?
+![bg right w:450](./img/jmeter-logo.svg)
+# What is JMeter?
 
-- Supports multiple protocols, such as:
+- Apache open-source load testing tool
+- Java-based and supported on all major platforms
+- One of the most popular load testing tools with a large user community
+
+---
+
+# JMeter Capabilities
+
+- Supports a wide range of protocols, including:
   - HTTP
   - SOAP
   - LDAP
   - SMTP
   - JDBC
-  - Mutiple other protocols
-- Has an IDE for building and debugging load tests (GUI mode)
-- Has a CLI for running load tests on scale (non-GUI mode)
-- Integrated reporting and analysis tools
+- Provides an IDE for building and debugging load tests (GUI mode)
+- Offers a CLI for executing load tests at scale (non-GUI mode)
+- Includes integrated reporting and analysis tools
 
 ---
 
 # JMeter Limitations
 
-- JMeter is NOT a browser!
-- It does not execute any JavaScript code or evaluate any HTML or CSS!
-- Therefore, the Response Time in JMeter will be less than the actual response time in a browser!
-
----
-
-# Manual Testing vs Testing in Pipelines
-
-- Manual testing: Time-consuming, prone to human error, and inconsistent
-- Testing in pipelines: Automated, consistent, scalable, and integrated with development processes
-
----
-
-# Typical Problems with Load Testing
-
-- Insufficient test coverage
-- Last-minute testing leading to delays and increased costs
-- Inaccurate load simulation
-- Lack of integration with development processes
-
----
-
-# JMeter and Azure Load Testing Service
-
-- JMeter: Open-source, extensible load testing tool
-- Azure Load Testing Service: Scalable, cloud-based platform for running JMeter tests
-- Combines the power of JMeter with the scalability and reliability of Azure
+- JMeter does not function as a browser:
+  - It cannot execute JavaScript or render HTML/CSS
+- As a result, JMeter's response times may not accurately reflect real-world browser response times
+- Consider using browser-based testing tools or integrating browser metrics for a more accurate representation of user experience
 
 ---
 
@@ -172,7 +187,21 @@ style: |
 
 # JMeter Workflow
 
-![w:900px](img/jmeter-workflow.drawio.png)
+
+- Plan 
+- Record/Script/Debug 
+- Customize parameters and settings
+- Validate and run the test
+
+![bg right:60% w:700px](img/jmeter-workflow.drawio.png)
+
+---
+
+# Azure Load Testing Service
+
+- JMeter: Open-source, extensible load testing tool
+- Azure Load Testing Service: Scalable, cloud-based platform for running JMeter tests
+- Combines the power of JMeter with the scalability and reliability of Azure
 
 ---
 
