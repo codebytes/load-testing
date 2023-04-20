@@ -1,7 +1,7 @@
 ---
 marp: true
 theme: default
-footer: 'https://example.com'
+footer: 'https://chris-ayers.com'
 mermaid: true
 style: |
   .columns {
@@ -33,7 +33,7 @@ style: |
   @import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css'
 ---
 
-<!-- _footer: 'https://github.com/Codebytes/build-with-bicep' -->
+<!-- _footer: 'https://github.com/Codebytes/load-testing' -->
 
 ![bg left:40%](./img/background.png)
 
@@ -72,6 +72,7 @@ style: |
 
 --- 
 
+![bg right](img/f5.gif)
 # What is Load Testing?
 
 - Evaluating an application, system, or network performance under specific load conditions or increasing levels of load
@@ -111,39 +112,6 @@ style: |
 
 ---
 
-# Why Load Test?
-
-- **Identify bottlenecks**: Uncover performance limitations within an application
-- **Ensure reliability**: Verify the application can withstand high levels of user traffic
-- **Verify capacity**: Validate that the application can handle anticipated user load
-
----
-
-# Manual Testing vs Testing in Pipelines
-
-<div class="columns">
-<div>
-
-## Manual Testing
-
-- **Time-consuming**
-- **Prone to human error**
-- **Inconsistent**
-- **Limited scalability**
-</div>
-<div>
-
-## Testing in Pipelines
-
-- **Automated**
-- **Consistent**
-- **Scalable**
-- **Integrated with development processes**
-</div>
-</div>
-
----
-
 ![bg right w:450](./img/jmeter-logo.svg)
 # What is JMeter?
 
@@ -176,15 +144,6 @@ style: |
 
 ---
 
-# Creating JMeter Tests
-
-- Plan your test scenario
-- Record user interactions using JMeter's proxy
-- Customize test parameters and settings
-- Validate and run the test
-
----
-
 # JMeter Workflow
 
 
@@ -194,6 +153,31 @@ style: |
 - Validate and run the test
 
 ![bg right:60% w:700px](img/jmeter-workflow.drawio.png)
+
+---
+
+# Manual Testing vs Testing in Pipelines
+
+<div class="columns">
+<div>
+
+## Manual Testing
+
+- **Time-consuming**
+- **Prone to human error**
+- **Inconsistent**
+- **Limited scalability**
+</div>
+<div>
+
+## Testing in Pipelines
+
+- **Automated**
+- **Consistent**
+- **Scalable**
+- **Integrated with development processes**
+</div>
+</div>
 
 ---
 
