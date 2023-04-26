@@ -24,7 +24,7 @@ style: |
   .fa-window-maximize { color: skyblue; }
 
   svg[id^="mermaid-"] { 
-    min-width: 480px; 
+    min-width: 960px; 
     max-width: 960px; 
     min-height: 360px; 
     max-height: 600px; 
@@ -155,7 +155,7 @@ style: |
 
 <div class="mermaid">
 flowchart LR
-Dev --WriteScript--> M[Controller]
+Dev --Write Script--> M[Controller]
 M-->Node1-->T[Target Server]
 M-->Node2-->T
 M-->Node3-->T
