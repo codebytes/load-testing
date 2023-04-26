@@ -60,12 +60,7 @@ style: |
 # Agenda
 
 - **What is Load Testing?**
-  - **Key Load Testing Concepts**
-  - **Importance of Load Testing**
-  - **Manual Testing vs Testing in Pipelines**
-  - **Challenges in Load Testing**
-- **JMeter**
-  - **JMeter and Azure Load Testing Service**
+- **What is JMeter?**
 - **Infrastructure as Code (IaC) and Continuous Load Testing**
 - **Benefits of Shift-Left Load Testing**
 - **Conclusion and Q&A**
@@ -153,6 +148,19 @@ style: |
 - Validate and run the test
 
 ![bg right:60% w:700px](img/jmeter-workflow.drawio.png)
+
+---
+
+# JMeter Testing Architecture
+
+<div class="mermaid">
+flowchart LR
+Dev --WriteScript--> M[Controller]
+M-->Node1-->T[Target Server]
+M-->Node2-->T
+M-->Node3-->T
+M-->Node4-->T
+</div>
 
 ---
 
