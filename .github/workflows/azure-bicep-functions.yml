@@ -117,7 +117,7 @@ jobs:
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
     - name: 'Deploy to Azure WebApp'
       id: deploy-to-webapp 
-      uses: azure/webapps-deploy@v2
+      uses: azure/webapps-deploy@v3
       with:
         app-name: ${{ needs.deploy-iac.outputs.nodeWebAppName }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/dist
