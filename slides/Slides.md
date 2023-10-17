@@ -128,15 +128,11 @@ mermaid: true
 <div class="mermaid">
 
 flowchart LR
-style Dev fill:#00aaff,stroke:#000000,stroke-width:2px
-style M fill:#00ffaa,stroke:#000000,stroke-width:2px
-style T fill:#00ffaa,stroke:#000000,stroke-width:2px
-style Node1,Node2,Node3,Node4 fill:#00ffaa,stroke:#000000,stroke-width:2px
-Dev --Write Script--> M[Controller]
-M-->Node1-->T[Target Server]
-M-->Node2-->T
-M-->Node3-->T
-M-->Node4-->T
+  Dev --Write Script--> M[Controller]
+  M-->Node1-->T[Target Server]
+  M-->Node2-->T
+  M-->Node3-->T
+  M-->Node4-->T
 
 </div>
 
