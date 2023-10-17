@@ -1,36 +1,8 @@
 ---
 marp: true
-theme: default
+theme: custom-default
 footer: 'https://chris-ayers.com'
 mermaid: true
-style: |
-  .columns {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
-  }
-  .columns3 {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1rem;
-  } 
-  img[alt~="center"] {
-    display: block;
-    margin: 0 auto;
-  }
-  .fa-twitter { color: aqua; }
-  .fa-mastodon { color: purple; }
-  .fa-linkedin { color: blue; }
-  .fa-window-maximize { color: skyblue; }
-
-  svg[id^="mermaid-"] { 
-    min-width: 960px; 
-    max-width: 960px; 
-    min-height: 360px; 
-    max-height: 600px; 
-  }
-
-  @import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css'
 ---
 
 <!-- _footer: 'https://github.com/Codebytes/load-testing' -->
@@ -154,12 +126,18 @@ style: |
 # JMeter Testing Architecture
 
 <div class="mermaid">
+
 flowchart LR
+style Dev fill:#00aaff,stroke:#000000,stroke-width:2px
+style M fill:#00ffaa,stroke:#000000,stroke-width:2px
+style T fill:#00ffaa,stroke:#000000,stroke-width:2px
+style Node1,Node2,Node3,Node4 fill:#00ffaa,stroke:#000000,stroke-width:2px
 Dev --Write Script--> M[Controller]
 M-->Node1-->T[Target Server]
 M-->Node2-->T
 M-->Node3-->T
 M-->Node4-->T
+
 </div>
 
 ---
@@ -270,7 +248,6 @@ M-->Node4-->T
 </div>
 
 </div>
-
 <script type="module">
   import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
   mermaid.initialize({ startOnLoad: true });
