@@ -88,7 +88,7 @@ resource databaseAccountId_sampledatabase_samplecollection_default 'Microsoft.Do
   name: 'default'
   properties: {
     resource: {
-      throughput: 400
+      throughput: 300
     }
   }
 }
