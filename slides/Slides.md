@@ -42,28 +42,47 @@ mermaid: true
 ![bg right](img/f5.gif)
 # What is Load Testing?
 
-- Evaluating an application, system, or network performance under specific load conditions or increasing levels of load
-- Helps identify bottlenecks, ensure reliability, and verify capacity
-- Involves simulating real-world usage scenarios and gradually increasing load to observe system behavior
+Evaluating an application, system, or network performance under *specific load conditions* or *increasing levels of load*
+
+---
+
+# Load Testing
+- Helps identify bottlenecks
+- Ensure reliability
+- Verify capacity
+
+![bg left fit](img/bottleneck.png)
+
+---
+
+![bg fit](./img/toystory.png)
+
+---
+
+# Simulated Traffic
+![bg right](img/matrix.png)
+
+Involves simulating real-world usage scenarios and gradually increasing load to observe system behavior
 
 ---
 
 # Types of Load Tests
 
-<div class="columns">
-<div>
+---
 
-![w:450](img/load-test.png)
-![w:450](img/stress-test.png)
+![bg fit](img/load-test.png)
 
-</div>
-<div>
+---
 
-![w:450](img/soak-test.png)
-![w:450](img/spike-test.png)
+![bg fit](img/stress-test.png)
 
-</div>
-</div>
+---
+
+![bg fit](img/soak-test.png)
+
+---
+
+![bg fit](img/spike-test.png)
 
 ---
 
@@ -73,9 +92,28 @@ mermaid: true
 - **Ramp-up time:** Time taken to reach the full number of virtual users
 - **Response time:** Time from sending a request to receiving the last response
 - **Latency:** Time from sending a request to receiving the first response
-- **Requests per second (RPS):** Total number of requests generated per second during the test 
+
+---
+
+# Key Concepts of Load Testing
+
+**Requests per second (RPS):** Total number of requests generated per second during the test
+
 > RPS = (number of requests) / (total time in seconds)
 > Virtual users = (RPS) * (latency in seconds)
+
+---
+
+![bg fit](img/gru.png)
+
+---
+
+![bg fit](img/response-errors.png)
+
+---
+
+![bg right fit](img/scooby.png)
+# Azure Load Testing Service w/ JMeter
 
 ---
 
@@ -129,10 +167,11 @@ mermaid: true
 
 flowchart LR
   Dev --Write Script--> M[Controller]
-  M-->Node1-->T[Target Server]
+  M-->Node1-->T
   M-->Node2-->T
   M-->Node3-->T
   M-->Node4-->T
+  T[Target Server]
 
 </div>
 
@@ -172,7 +211,7 @@ flowchart LR
 ---
 
 # Azure Load Testing Service
-![w:900px](img/azure-load-testing-architecture.png)
+![w:900px center](img/azure-load-testing-architecture.png)
 
 ---
 
@@ -181,6 +220,14 @@ flowchart LR
 - Upload JMeter test plan to Azure
 - Configure test duration, load pattern, and number of users
 - Monitor test progress and analyze results
+
+---
+
+# Load Testing in the Cloud
+
+- Control Costs with Ephemeral Environments
+  - Infrastructure as Code (IaC)
+  - CI/CD Pipelines
 
 ---
 
@@ -200,12 +247,29 @@ flowchart LR
 
 ---
 
+![bg fit](img/wonka.png)
+
+---
+
+![bg fit](img/morpheus.png)
+
+---
+
+# Shift Left
+![fit bg right:80%](img/shift-left.png)
+
+---
+
 # Benefits of Shift-Left Load Testing
 
 - Early identification of performance bottlenecks
 - Improved collaboration between developers, testers, and operations
 - Reduced costs and increased confidence in solutions
 - Faster feedback loop and shorter time to market
+
+---
+
+![center fit](img/production.png)
 
 ---
 
@@ -227,7 +291,7 @@ flowchart LR
 
 ## Links
 
-- [https://docs.microsoft.com/en-us/events/learntv/learnlive-iac-and-bicep/](https://docs.microsoft.com/en-us/events/learntv/learnlive-iac-and-bicep/)
+- [Azure Load Testing ]
 - [https://github.com/codebytes](https://github.com/codebytes)
 
 </div>
