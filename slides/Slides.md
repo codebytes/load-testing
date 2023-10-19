@@ -158,7 +158,7 @@ There is nuance in the types of load tests
 
 # JMeter Testing Architecture
 
-![bg fit](img/jmeter-arch.png)
+![center fit](img/jmeter-arch.png)
 
 ---
 
