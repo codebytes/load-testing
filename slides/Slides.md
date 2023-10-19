@@ -1,5 +1,5 @@
 ---
-marp: true
+marp: false
 theme: custom-default
 footer: 'https://chris-ayers.com'
 mermaid: true
@@ -158,17 +158,7 @@ There is nuance in the types of load tests
 
 # JMeter Testing Architecture
 
-<div class="mermaid">
-
-flowchart LR
-  Dev --Write Script--> M[Controller]
-  M-->Node1-->T
-  M-->Node2-->T
-  M-->Node3-->T
-  M-->Node4-->T
-  T[Target Server]
-
-</div>
+![bg fit](img/jmeter-arch.png)
 
 ---
 
