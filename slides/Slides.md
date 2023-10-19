@@ -46,12 +46,11 @@ Evaluating an application, system, or network performance under *specific load c
 
 ---
 
+![bg left fit](img/bottleneck.png)
 # Load Testing
 - Helps identify bottlenecks
 - Ensure reliability
 - Verify capacity
-
-![bg left fit](img/bottleneck.png)
 
 ---
 
@@ -67,6 +66,7 @@ Involves simulating real-world usage scenarios and gradually increasing load to 
 ---
 
 # Types of Load Tests
+There is nuance in the types of load tests
 
 ---
 
@@ -109,11 +109,6 @@ Involves simulating real-world usage scenarios and gradually increasing load to 
 ---
 
 ![bg fit](img/response-errors.png)
-
----
-
-![bg right fit](img/scooby.png)
-# Azure Load Testing Service w/ JMeter
 
 ---
 
@@ -202,11 +197,24 @@ flowchart LR
 
 ---
 
+
+![bg right fit](img/scooby.png)
+# Azure Load Testing Service w/ JMeter
+
+---
+
+![bg right](img/azure)
 # Azure Load Testing Service
 
-- JMeter: Open-source, extensible load testing tool
 - Azure Load Testing Service: Scalable, cloud-based platform for running JMeter tests
 - Combines the power of JMeter with the scalability and reliability of Azure
+
+---
+
+# Azure Load Testing Service
+- Allows testing of private endpoints
+- Provides integrated reporting and analysis tools
+- Integrates with Azure Monitor and Application Insights
 
 ---
 
@@ -291,8 +299,9 @@ flowchart LR
 
 ## Links
 
-- [Azure Load Testing ]
-- [https://github.com/codebytes](https://github.com/codebytes)
+- [Azure Load Testing](https://learn.microsoft.com/en-us/azure/load-testing/overview-what-is-azure-load-testing)
+- [https://aka.ms/malt-blogs](https://aka.ms/malt-blogs)
+- [https://github.com/codebytes/load-testing](https://github.com/codebytes/load-testing)
 
 </div>
 <div>
