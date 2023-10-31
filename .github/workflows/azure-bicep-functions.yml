@@ -97,7 +97,7 @@ jobs:
         echo VUE_APP_COSTUMES_API_URL="https://${{ needs.deploy-iac.outputs.functionAppUrl }}/api" >> .env.production
 
     - name: Set up Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: ${{ env.NODE_VERSION }}
         cache: 'npm'
