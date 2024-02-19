@@ -50,7 +50,7 @@ jobs:
           azPSVersion: "latest"      
       - name: Deploy Azure Resource Manager (ARM) Template
         id: deploy
-        uses: Azure/arm-deploy@v1
+        uses: Azure/arm-deploy@v2
         with:
           resourceGroupName: ${{ vars.AZURE_RG }}
           template: 'project/bicep/main.bicep'
