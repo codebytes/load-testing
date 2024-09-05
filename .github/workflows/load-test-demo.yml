@@ -51,7 +51,7 @@ jobs:
     # Deploy Arm template
       - name: Deploy Azure Resource Manager (ARM) Template
         id: deploy
-        uses: Azure/arm-deploy@v1
+        uses: Azure/arm-deploy@v2
         with:
           resourceGroupName: ${{ env.LOAD_TEST_RESOURCE_GROUP }}
           template: 'demo/infra/main.bicep'
@@ -88,7 +88,7 @@ jobs:
           azPSVersion: "latest"      
           
       - name: Create Azure Load Testing resource
-        uses: azure/arm-deploy@v1
+        uses: azure/arm-deploy@v2
         with:
           resourceGroupName: ${{ env.LOAD_TEST_RESOURCE_GROUP }}
           template: ./demo/infra/loadtest.bicep
