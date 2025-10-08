@@ -28,7 +28,7 @@ param sku string = 'B1'
 param runtime string = 'dotnet'
 
 @description('The Runtime stack of current web app')
-param linuxFxVersion string = 'NODE|18-lts'
+param linuxFxVersion string = 'NODE|20-lts'
 
 var functionAppName = 'fnapp-${appName}'
 var nodeWebAppName = 'node-${appName}'
@@ -42,7 +42,7 @@ var loadTestName = 'loadtest-${appName}'
 @description('This is the built-in DocumentDB Account Contributor role. See https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#documentdb-account-contributor')
 var cosmosDBContributorRole = subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '5bd9cd88-fe45-4216-938b-f97437e15450')
 
-resource cosmosdbAccount 'Microsoft.DocumentDB/databaseAccounts@2022-05-15' = {
+resource cosmosdbAccount 'Microsoft.DocumentDB/databaseAccounts@2024-05-15' = {
   name: toLower(cosmosdbAccountName)
   location: location
   properties: {
@@ -59,7 +59,7 @@ resource cosmosdbAccount 'Microsoft.DocumentDB/databaseAccounts@2022-05-15' = {
   }
 }
 
-resource database 'Microsoft.DocumentDB/databaseAccounts/sqlDatabases@2022-05-15' = {
+resource database 'Microsoft.DocumentDB/databaseAccounts/sqlDatabases@2024-05-15' = {
   parent: cosmosdbAccount
   name: databaseName
   properties: {
@@ -72,7 +72,7 @@ resource database 'Microsoft.DocumentDB/databaseAccounts/sqlDatabases@2022-05-15
   }
 }
 
-resource container 'Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers@2022-05-15' = {
+resource container 'Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers@2024-05-15' = {
   parent: database
   name: containerName
   properties: {
@@ -91,7 +91,7 @@ resource container 'Microsoft.DocumentDB/databaseAccounts/sqlDatabases/container
   }
 }
 
-resource storageAccount 'Microsoft.Storage/storageAccounts@2021-08-01' = {
+resource storageAccount 'Microsoft.Storage/storageAccounts@2023-05-01' = {
   name: storageAccountName
   location: location
   sku: {
@@ -100,7 +100,7 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-08-01' = {
   kind: 'Storage'
 }
 
-resource logAnalyticsWorkspace 'Microsoft.OperationalInsights/workspaces@2020-08-01' = {
+resource logAnalyticsWorkspace 'Microsoft.OperationalInsights/workspaces@2023-09-01' = {
   name: workspaceName
   location: location
 }
@@ -115,7 +115,7 @@ resource applicationInsights 'Microsoft.Insights/components@2020-02-02' = {
   }
 }
 
-resource hostingPlan 'Microsoft.Web/serverfarms@2021-03-01' = {
+resource hostingPlan 'Microsoft.Web/serverfarms@2023-12-01' = {
   name: hostingPlanName
   location: location
   sku: {
@@ -127,7 +127,7 @@ resource hostingPlan 'Microsoft.Web/serverfarms@2021-03-01' = {
   }
 }
 
-resource nodeWebApp 'Microsoft.Web/sites@2021-03-01' = {
+resource nodeWebApp 'Microsoft.Web/sites@2023-12-01' = {
   name: nodeWebAppName
   location: location
   properties: {
@@ -159,7 +159,7 @@ resource nodeWebApp 'Microsoft.Web/sites@2021-03-01' = {
   }
 }
 
-resource functionApp 'Microsoft.Web/sites@2021-03-01' = {
+resource functionApp 'Microsoft.Web/sites@2023-12-01' = {
   name: functionAppName
   location: location
   kind: 'functionapp'
@@ -171,8 +171,8 @@ resource functionApp 'Microsoft.Web/sites@2021-03-01' = {
     siteConfig: {
       ftpsState: 'FtpsOnly'
       minTlsVersion: '1.2'
-      netFrameworkVersion: 'v6.0'
-      linuxFxVersion: 'DOTNET|6.0'
+      netFrameworkVersion: 'v8.0'
+      linuxFxVersion: 'DOTNET|8.0'
       cors:{
         allowedOrigins: [
           '*'
@@ -221,7 +221,7 @@ resource functionApp 'Microsoft.Web/sites@2021-03-01' = {
   }
 }
 
-resource cosmosDBFunctionAppPermissions 'Microsoft.Authorization/roleAssignments@2020-04-01-preview' = {
+resource cosmosDBFunctionAppPermissions 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
   name: guid(cosmosdbAccount.id, functionApp.name, cosmosDBContributorRole)
   scope: cosmosdbAccount
   properties: {
@@ -231,7 +231,7 @@ resource cosmosDBFunctionAppPermissions 'Microsoft.Authorization/roleAssignments
   }
 }
 
-resource azureLoadTestService 'Microsoft.LoadTestService/loadtests@2022-04-15-preview' = {
+resource azureLoadTestService 'Microsoft.LoadTestService/loadtests@2023-12-01-preview' = {
   name: loadTestName
   location: location
 }

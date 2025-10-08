@@ -17,7 +17,7 @@ env:
   LOAD_TEST_RESOURCE: "cayers-demo-lt-service"
   LOAD_TEST_RESOURCE_GROUP: "rg-lt-demo"
   AZURE_WEBAPP_PACKAGE_PATH: 'demo/src'      # set this to the path to your web app project, defaults to the repository root
-  NODE_VERSION: '14.15.1'                # set this to the node version to use
+  NODE_VERSION: '20.x'                # set this to the node version to use
   LOCATION: "eastus"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
