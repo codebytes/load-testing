@@ -171,8 +171,8 @@ resource functionApp 'Microsoft.Web/sites@2023-12-01' = {
     siteConfig: {
       ftpsState: 'FtpsOnly'
       minTlsVersion: '1.2'
-      netFrameworkVersion: 'v8.0'
-      linuxFxVersion: 'DOTNET|8.0'
+      netFrameworkVersion: 'v6.0'
+      linuxFxVersion: 'DOTNET|6.0'
       cors:{
         allowedOrigins: [
           '*'

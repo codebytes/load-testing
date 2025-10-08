@@ -88,7 +88,7 @@ export default defineComponent({
     },
 
     updateSpookyness(level: number) {
-      let data = {
+      const data = {
         id: this.currentCostume.id,
         title: this.currentCostume.title,
         description: this.currentCostume.description,
