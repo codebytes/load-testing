@@ -4,7 +4,7 @@ param webAppName string
 var hostingPlanName = '${webAppName}-plan'
 var dbAccountName = '${webAppName}-db'
 
-resource webApp 'Microsoft.Web/sites@2022-09-01' = {
+resource webApp 'Microsoft.Web/sites@2023-12-01' = {
   name: webAppName
   location: location
   properties: {
@@ -16,7 +16,7 @@ resource webApp 'Microsoft.Web/sites@2022-09-01' = {
         }
         {
           name: 'WEBSITE_NODE_DEFAULT_VERSION'
-          value: '14.16.0'
+          value: '~20'
         }
         {
           name: 'CONNECTION_STRING'
@@ -33,12 +33,12 @@ resource webApp 'Microsoft.Web/sites@2022-09-01' = {
   }
 }
 
-resource webAppName_Microsoft_ApplicationInsights_AzureWebSites 'Microsoft.Web/sites/siteextensions@2022-09-01' = {
+resource webAppName_Microsoft_ApplicationInsights_AzureWebSites 'Microsoft.Web/sites/siteextensions@2023-12-01' = {
   parent: webApp
   name: 'Microsoft.ApplicationInsights.AzureWebSites'
 }
 
-resource hostingPlan 'Microsoft.Web/serverfarms@2018-02-01' = {
+resource hostingPlan 'Microsoft.Web/serverfarms@2023-12-01' = {
   name: hostingPlanName
   location: location
   sku: {
@@ -61,7 +61,7 @@ resource hostingPlan 'Microsoft.Web/serverfarms@2018-02-01' = {
   }
 }
 
-resource databaseAccountId_sampledatabase 'Microsoft.DocumentDB/databaseAccounts/mongodbDatabases@2022-11-15' = {
+resource databaseAccountId_sampledatabase 'Microsoft.DocumentDB/databaseAccounts/mongodbDatabases@2024-05-15' = {
   parent: databaseAccountId_resource
   name: 'sampledatabase'
   properties: {
@@ -72,7 +72,7 @@ resource databaseAccountId_sampledatabase 'Microsoft.DocumentDB/databaseAccounts
   }
 }
 
-resource databaseAccountId_sampledatabase_samplecollection 'Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections@2022-11-15' = {
+resource databaseAccountId_sampledatabase_samplecollection 'Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections@2024-05-15' = {
   parent: databaseAccountId_sampledatabase
   name: 'samplecollection'
   properties: {
@@ -83,7 +83,7 @@ resource databaseAccountId_sampledatabase_samplecollection 'Microsoft.DocumentDB
   }
 }
 
-resource databaseAccountId_sampledatabase_samplecollection_default 'Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/throughputSettings@2020-06-01-preview' = {
+resource databaseAccountId_sampledatabase_samplecollection_default 'Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/throughputSettings@2024-05-15' = {
   parent: databaseAccountId_sampledatabase_samplecollection
   name: 'default'
   properties: {
@@ -103,7 +103,7 @@ resource Microsoft_Insights_components_webApp 'Microsoft.Insights/components@202
   }
 }
 
-resource databaseAccountId_resource 'Microsoft.DocumentDB/databaseAccounts@2022-11-15' = {
+resource databaseAccountId_resource 'Microsoft.DocumentDB/databaseAccounts@2024-05-15' = {
   kind: 'MongoDB'
   name: dbAccountName
   location: location

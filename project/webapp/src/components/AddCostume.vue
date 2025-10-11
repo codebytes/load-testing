@@ -71,7 +71,7 @@ export default defineComponent({
   },
   methods: {
     saveCostume() {
-      let data = {
+      const data = {
         title: this.Costume.title,
         description: this.Costume.description,
         spookyness: this.Costume.spookyness,
