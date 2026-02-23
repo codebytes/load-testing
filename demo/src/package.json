@@ -11,7 +11,7 @@
   "dependencies": {
     "fs": "0.0.1-security",
     "jsdom": "27.3.0",
-    "mongodb": "7.0.0"
+    "mongodb": "7.1.0"
   },
   "engines": {
     "node": "20.x"
