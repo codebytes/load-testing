@@ -43,7 +43,7 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       - name: Create Resource Group
-        uses: azure/powershell@v2
+        uses: azure/powershell@v3
         continue-on-error: false
         with:
           inlineScript: |
