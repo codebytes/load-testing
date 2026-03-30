@@ -9,7 +9,6 @@
     "name": "microsoft"
   },
   "dependencies": {
-    "fs": "0.0.1-security",
     "jsdom": "29.0.1",
     "mongodb": "7.1.1"
   },
