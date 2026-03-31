@@ -16,8 +16,8 @@ namespace Costumes.API
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "costumes")] HttpRequest req,
             [CosmosDB(
                 databaseName: "CostumesDB",
-                collectionName: "Costumes",
-                ConnectionStringSetting = "CosmosDbConnectionString")]IAsyncCollector<dynamic> documentsOut,
+                containerName: "Costumes",
+                Connection = "CosmosDbConnectionString")]IAsyncCollector<dynamic> documentsOut,
             ILogger log)
         {
             log.LogInformation("Add Costume function processed a request.");

@@ -13,8 +13,8 @@ namespace Costumes.API
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "costumes/{id:Guid}")] HttpRequest req,
             [CosmosDB(
                 databaseName: "CostumesDB",
-                collectionName: "Costumes",
-                ConnectionStringSetting = "CosmosDbConnectionString",
+                containerName: "Costumes",
+                Connection = "CosmosDbConnectionString",
                 Id = "{id}",
                 PartitionKey = "{id}")] dynamic costume,
             ILogger log)

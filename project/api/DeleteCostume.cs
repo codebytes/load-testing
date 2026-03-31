@@ -4,8 +4,7 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using Microsoft.Azure.Documents.Client;
-using Microsoft.Azure.Documents;
+using Microsoft.Azure.Cosmos;
 
 namespace Costumes.API
 {
@@ -16,14 +15,14 @@ namespace Costumes.API
             [HttpTrigger(AuthorizationLevel.Anonymous, "delete", Route = "costumes/{id:Guid}")] HttpRequest req,
             [CosmosDB(
                 databaseName: "CostumesDB",
-                collectionName: "Costumes",
-                ConnectionStringSetting = "CosmosDbConnectionString",
+                containerName: "Costumes",
+                Connection = "CosmosDbConnectionString",
                 Id = "{id}",
                 PartitionKey = "{id}")] dynamic costume,
             [CosmosDB(
                 databaseName: "CostumesDB",
-                collectionName: "Costumes",
-                ConnectionStringSetting = "CosmosDbConnectionString")] DocumentClient client,
+                containerName: "Costumes",
+                Connection = "CosmosDbConnectionString")] CosmosClient client,
             ILogger log)
         {
             log.LogInformation("DeleteCostume function processed a request.");
@@ -34,7 +33,9 @@ namespace Costumes.API
             }
             else
             {
-                await client.DeleteDocumentAsync(costume._self, new RequestOptions { PartitionKey = new PartitionKey(costume.id) });
+                var container = client.GetContainer("CostumesDB", "Costumes");
+                string costumeId = costume.id.ToString();
+                await container.DeleteItemAsync<dynamic>(costumeId, new PartitionKey(costumeId));
 
                 return new OkObjectResult(costume);
             }
