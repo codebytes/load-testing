@@ -23,9 +23,10 @@ param sku string = 'B1'
 @allowed([
   'node'
   'dotnet'
+  'dotnet-isolated'
   'java'
 ])
-param runtime string = 'dotnet'
+param runtime string = 'dotnet-isolated'
 
 @description('The Runtime stack of current web app')
 param linuxFxVersion string = 'NODE|20-lts'
@@ -171,8 +172,8 @@ resource functionApp 'Microsoft.Web/sites@2023-12-01' = {
     siteConfig: {
       ftpsState: 'FtpsOnly'
       minTlsVersion: '1.2'
-      netFrameworkVersion: 'v6.0'
-      linuxFxVersion: 'DOTNET|6.0'
+      netFrameworkVersion: 'v10.0'
+      linuxFxVersion: 'DOTNET-ISOLATED|10.0'
       cors:{
         allowedOrigins: [
           '*'

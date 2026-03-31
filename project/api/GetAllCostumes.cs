@@ -1,27 +1,20 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
 
-namespace Costumes.API
+namespace Costumes.API;
+
+public class GetAllCostumes(ILogger<GetAllCostumes> logger)
 {
-    public static class GetAllCostumes
+    [Function("GetAllCostumes")]
+    public IActionResult Run(
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "costumes")] HttpRequest req,
+        [CosmosDBInput("CostumesDB", "Costumes",
+            Connection = "CosmosDbConnectionString",
+            SqlQuery = "SELECT * FROM c")] IEnumerable<dynamic> costumes)
     {
-        [FunctionName("GetAllCostumes")]
-        public static IActionResult Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "costumes")] HttpRequest req,
-            [CosmosDB(
-                databaseName: "CostumesDB",
-                containerName: "Costumes",
-                Connection = "CosmosDbConnectionString",
-                SqlQuery = "SELECT * FROM c")] IEnumerable<dynamic> costumes,
-            ILogger log)
-        {
-            log.LogInformation("GetCostumeById function processed a request.");
-            // System.Threading.Thread.Sleep(2500);
-            return new OkObjectResult(costumes);
-        }
+        logger.LogInformation("GetAllCostumes function processed a request.");
+        return new OkObjectResult(costumes);
     }
 }

@@ -1,35 +1,27 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
 
-namespace Costumes.API
+namespace Costumes.API;
+
+public class GetCostumeById(ILogger<GetCostumeById> logger)
 {
-    public static class GetCostumeById
+    [Function("GetCostumeById")]
+    public IActionResult Run(
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "costumes/{id:guid}")] HttpRequest req,
+        [CosmosDBInput("CostumesDB", "Costumes",
+            Connection = "CosmosDbConnectionString",
+            Id = "{id}",
+            PartitionKey = "{id}")] dynamic? costume)
     {
-        [FunctionName("GetCostumeById")]
-        public static IActionResult Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "costumes/{id:Guid}")] HttpRequest req,
-            [CosmosDB(
-                databaseName: "CostumesDB",
-                containerName: "Costumes",
-                Connection = "CosmosDbConnectionString",
-                Id = "{id}",
-                PartitionKey = "{id}")] dynamic costume,
-            ILogger log)
+        logger.LogInformation("GetCostumeById function processed a request.");
+
+        if (costume == null)
         {
-            log.LogInformation("GetCostumeById function processed a request.");
-
-            if (costume == null)
-            {
-                return new NotFoundObjectResult("Boo! Costume not found.");
-            }
-            else
-            {
-                return new OkObjectResult(costume);
-            }
+            return new NotFoundObjectResult("Boo! Costume not found.");
         }
-    }
 
+        return new OkObjectResult(costume);
+    }
 }

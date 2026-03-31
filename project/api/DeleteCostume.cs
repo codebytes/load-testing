@@ -1,44 +1,32 @@
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Cosmos;
+using Microsoft.Azure.Functions.Worker;
+using Microsoft.Extensions.Logging;
 
-namespace Costumes.API
+namespace Costumes.API;
+
+public class DeleteCostume(ILogger<DeleteCostume> logger, CosmosClient cosmosClient)
 {
-    public static class DeleteCostume
+    [Function("DeleteCostume")]
+    public async Task<IActionResult> Run(
+        [HttpTrigger(AuthorizationLevel.Anonymous, "delete", Route = "costumes/{id:guid}")] HttpRequest req,
+        [CosmosDBInput("CostumesDB", "Costumes",
+            Connection = "CosmosDbConnectionString",
+            Id = "{id}",
+            PartitionKey = "{id}")] dynamic? costume)
     {
-        [FunctionName("DeleteCostume")]
-        public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "delete", Route = "costumes/{id:Guid}")] HttpRequest req,
-            [CosmosDB(
-                databaseName: "CostumesDB",
-                containerName: "Costumes",
-                Connection = "CosmosDbConnectionString",
-                Id = "{id}",
-                PartitionKey = "{id}")] dynamic costume,
-            [CosmosDB(
-                databaseName: "CostumesDB",
-                containerName: "Costumes",
-                Connection = "CosmosDbConnectionString")] CosmosClient client,
-            ILogger log)
+        logger.LogInformation("DeleteCostume function processed a request.");
+
+        if (costume == null)
         {
-            log.LogInformation("DeleteCostume function processed a request.");
-
-            if (costume == null)
-            {
-                return new NotFoundObjectResult("Boo! Costume not found.");
-            }
-            else
-            {
-                var container = client.GetContainer("CostumesDB", "Costumes");
-                string costumeId = costume.id.ToString();
-                await container.DeleteItemAsync<dynamic>(costumeId, new PartitionKey(costumeId));
-
-                return new OkObjectResult(costume);
-            }
+            return new NotFoundObjectResult("Boo! Costume not found.");
         }
+
+        var container = cosmosClient.GetContainer("CostumesDB", "Costumes");
+        string costumeId = costume.id.ToString();
+        await container.DeleteItemAsync<dynamic>(costumeId, new PartitionKey(costumeId));
+
+        return new OkObjectResult(costume);
     }
 }
