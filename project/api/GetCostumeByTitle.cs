@@ -14,8 +14,8 @@ namespace Costumes.API
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "costumes/{title:alpha}")] HttpRequest req,
             [CosmosDB(
                 databaseName: "CostumesDB",
-                collectionName: "Costumes",
-                ConnectionStringSetting = "CosmosDbConnectionString",
+                containerName: "Costumes",
+                Connection = "CosmosDbConnectionString",
                 SqlQuery = "SELECT * FROM c WHERE RegexMatch(c.title, {title}, 'i')")]
                  IEnumerable<dynamic> costumes,
             ILogger log)

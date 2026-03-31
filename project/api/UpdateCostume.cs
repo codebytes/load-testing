@@ -6,8 +6,7 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using Microsoft.Azure.Documents.Client;
-using Microsoft.Azure.Documents;
+using Microsoft.Azure.Cosmos;
 
 namespace Costumes.API
 {
@@ -18,14 +17,14 @@ namespace Costumes.API
             [HttpTrigger(AuthorizationLevel.Anonymous, "put", Route = "costumes/{id}")] HttpRequest req,
             [CosmosDB(
                 databaseName: "CostumesDB",
-                collectionName: "Costumes",
-                ConnectionStringSetting = "CosmosDbConnectionString",
+                containerName: "Costumes",
+                Connection = "CosmosDbConnectionString",
                 Id = "{id}",
-                PartitionKey = "{id}")] Document costume,
+                PartitionKey = "{id}")] dynamic costume,
             [CosmosDB(
                 databaseName: "CostumesDB",
-                collectionName: "Costumes",
-                ConnectionStringSetting = "CosmosDbConnectionString")] DocumentClient client,
+                containerName: "Costumes",
+                Connection = "CosmosDbConnectionString")] CosmosClient client,
             ILogger log)
         {
             log.LogInformation("UpdateCostume function processed a request.");
@@ -47,11 +46,13 @@ namespace Costumes.API
             }
             else
             {
-                costume.SetPropertyValue("title", title);
-                costume.SetPropertyValue("description", description);
-                costume.SetPropertyValue("spookyness", spookyness);
+                costume.title = title;
+                costume.description = description;
+                costume.spookyness = spookyness;
 
-                await client.ReplaceDocumentAsync(costume);
+                var container = client.GetContainer("CostumesDB", "Costumes");
+                string costumeId = costume.id.ToString();
+                await container.ReplaceItemAsync<dynamic>(costume, costumeId, new PartitionKey(costumeId));
 
                 return new OkObjectResult(costume);
             }
