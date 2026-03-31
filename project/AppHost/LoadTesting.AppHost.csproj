@@ -1,0 +1,21 @@
+<Project Sdk="Aspire.AppHost.Sdk/13.2.0">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UserSecretsId>640377c0-2197-4f0e-9f38-fa0492142516</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.Azure.CosmosDB" Version="13.2.0" />
+    <PackageReference Include="Aspire.Hosting.Azure.Functions" Version="13.2.0" />
+    <PackageReference Include="Aspire.Hosting.NodeJs" Version="9.5.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\api\azltops-func.csproj" />
+  </ItemGroup>
+
+</Project>
