@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "jsdom": "29.0.1",
-    "mongodb": "7.1.1"
+    "mongodb": "7.2.0"
   },
   "engines": {
     "node": "20.x"
