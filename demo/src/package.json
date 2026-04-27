@@ -9,7 +9,7 @@
     "name": "microsoft"
   },
   "dependencies": {
-    "jsdom": "29.0.1",
+    "jsdom": "29.1.0",
     "mongodb": "7.1.1"
   },
   "engines": {
