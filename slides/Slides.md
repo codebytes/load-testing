@@ -20,13 +20,13 @@ mermaid: true
 
 ## Chris Ayers
 
-### Senior Risk SRE<br>Azure CXP AzRel<br>Microsoft
+### Principal Software Engineer<br>Azure EngOps AzRel<br>Microsoft
 
 <i class="fa-brands fa-bluesky"></i> BlueSky: [@chris-ayers.com](https://bsky.app/profile/chris-ayers.com)
 <i class="fa-brands fa-linkedin"></i> LinkedIn: - [chris\-l\-ayers](https://linkedin.com/in/chris-l-ayers/)
 <i class="fa fa-window-maximize"></i> Blog: [https://chris-ayers\.com/](https://chris-ayers.com/)
 <i class="fa-brands fa-github"></i> GitHub: [Codebytes](https://github.com/codebytes)
-<i class="fa-brands fa-mastodon"></i> Mastodon: @Chrisayers@hachyderm.io
+<i class="fa-brands fa-mastodon"></i> Mastodon: [@Chrisayers@hachyderm.io](https://hachyderm.io/@Chrisayers)
 ~~<i class="fa-brands fa-twitter"></i> Twitter: @Chris_L_Ayers~~
 
 ---
@@ -56,7 +56,7 @@ Evaluating an application, system, or network performance under *specific load c
 
 ---
 
-![bg fit](./img/toystory.png)
+![center h:560](./img/toystory.png)
 
 ---
 
@@ -72,19 +72,19 @@ There is nuance in the types of load tests
 
 ---
 
-![bg fit](img/load-test.png)
+![center h:560](img/load-test.png)
 
 ---
 
-![bg fit](img/stress-test.png)
+![center h:560](img/stress-test.png)
 
 ---
 
-![bg fit](img/soak-test.png)
+![center h:560](img/soak-test.png)
 
 ---
 
-![bg fit](img/spike-test.png)
+![center h:560](img/spike-test.png)
 
 ---
 
@@ -106,11 +106,11 @@ There is nuance in the types of load tests
 
 ---
 
-![bg fit](img/gru.png)
+![center h:560](img/gru.png)
 
 ---
 
-![bg fit](img/response-errors.png)
+![center h:560](img/response-errors.png)
 
 ---
 
@@ -154,13 +154,17 @@ There is nuance in the types of load tests
 - Customize parameters and settings
 - Validate and run the test
 
-![bg right:60% w:700px](img/jmeter-workflow.drawio.png)
+---
+
+# JMeter Workflow: Execution Modes
+
+![center w:1100](img/jmeter-workflow.drawio.png)
 
 ---
 
 # JMeter Testing Architecture
 
-![center fit](img/jmeter-arch.png)
+![center h:460](img/jmeter-arch.png)
 
 ---
 
@@ -195,7 +199,6 @@ There is nuance in the types of load tests
 
 ---
 
-![bg right](img/azure)
 # Azure Load Testing Service
 
 - Azure Load Testing Service: Scalable, cloud-based platform for running JMeter tests
@@ -247,7 +250,7 @@ There is nuance in the types of load tests
 
 ---
 
-![bg fit](img/wonka.png)
+![center h:560](img/wonka.png)
 
 ---
 
@@ -269,7 +272,7 @@ There is nuance in the types of load tests
 
 ---
 
-![center fit](img/production.png)
+![center h:560](img/production.png)
 
 ---
 
@@ -304,7 +307,7 @@ There is nuance in the types of load tests
 <i class="fa-brands fa-linkedin"></i> LinkedIn: - [chris\-l\-ayers](https://linkedin.com/in/chris-l-ayers/)
 <i class="fa fa-window-maximize"></i> Blog: [https://chris-ayers\.com/](https://chris-ayers.com/)
 <i class="fa-brands fa-github"></i> GitHub: [Codebytes](https://github.com/codebytes)
-<i class="fa-brands fa-mastodon"></i> Mastodon: @Chrisayers@hachyderm.io
+<i class="fa-brands fa-mastodon"></i> Mastodon: [@Chrisayers@hachyderm.io](https://hachyderm.io/@Chrisayers)
 ~~<i class="fa-brands fa-twitter"></i> Twitter: @Chris_L_Ayers~~
 
 </div>

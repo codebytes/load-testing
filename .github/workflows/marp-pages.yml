@@ -6,6 +6,7 @@ on:
     branches: ["main"]
     paths:
       - 'slides/**'
+      - '.github/workflows/marp-pages.yml'
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -34,6 +35,12 @@ jobs:
         uses: docker://marpteam/marp-cli:v4.3.1
         with:
           args: --theme-set slides/themes -o build/index.html --html -- slides/Slides.md
+        env:
+          MARP_USER: root:root
+      - name: Marp Build (PDF)
+        uses: docker://marpteam/marp-cli:v4.3.1
+        with:
+          args: --theme-set slides/themes -o build/Slides.pdf --html --pdf --allow-local-files -- slides/Slides.md
         env:
           MARP_USER: root:root
       - name: Setup Pages
