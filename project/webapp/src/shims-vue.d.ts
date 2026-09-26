@@ -1,4 +1,4 @@
-import VueRouter, { Route } from "vue-router";
+import VueRouter from "vue-router";
 
 /* eslint-disable */
 
