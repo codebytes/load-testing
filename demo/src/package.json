@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "description": "nodejs-webapp",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "check": "node --check server.js && node --check db.js && node --check databaseOperations.js",
+    "test": "node --test tests/*.test.cjs"
   },
   "author": {
     "name": "microsoft"
@@ -13,6 +15,6 @@
     "mongodb": "7.5.0"
   },
   "engines": {
-    "node": "20.x"
+    "node": ">=26.10.0 <27"
   }
 }
