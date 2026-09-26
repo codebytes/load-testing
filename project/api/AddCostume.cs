@@ -11,6 +11,7 @@ public class AddCostumeOutput
     [CosmosDBOutput("CostumesDB", "Costumes", Connection = "CosmosDbConnectionString")]
     public object? Document { get; set; }
 
+    [HttpResult]
     public IActionResult HttpResponse { get; set; } = null!;
 }
 
