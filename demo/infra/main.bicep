@@ -16,7 +16,7 @@ resource webApp 'Microsoft.Web/sites@2023-12-01' = {
         }
         {
           name: 'WEBSITE_NODE_DEFAULT_VERSION'
-          value: '~20'
+          value: '~26'
         }
         {
           name: 'CONNECTION_STRING'
