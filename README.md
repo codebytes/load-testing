@@ -6,6 +6,12 @@ Shift load testing left with JMeter, Azure Load Testing, and GitHub Actions. Com
 
 [View HTML slides](https://chris-ayers.com/load-testing/) | [Download PDF](https://chris-ayers.com/load-testing/Slides.pdf)
 
+## Recordings
+
+- [PowerShell + DevOps Global Summit 2023 (Confreaks)](https://www.youtube.com/watch?v=p6die5PqcLM)
+- [PowerShell + DevOps Global Summit 2023 (PowerShell.org)](https://www.youtube.com/watch?v=RtzbniuLLJs)
+- [Learn Live: FastTrack for Azure — Supercharge Your DevOps Skills with Azure Load Testing](https://www.youtube.com/watch?v=FFng7ki_vI8)
+
 ## Resources
 
 - [Slide source](slides/Slides.md) (load-testing concepts, manual testing versus pipelines, and JMeter integration)
